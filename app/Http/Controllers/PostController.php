@@ -12,4 +12,8 @@ class PostController extends Controller
         return view('notes/list_notes') -> with(['notes' => $note->getPaginateDESC(3)]);
     }
     
+    public function show(Note $note){
+        return view('notes/show') -> with(['note' => $note]);
+    }
+    
 }

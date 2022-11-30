@@ -21,8 +21,12 @@
             <h1 class='text-3xl text-center m-8'>Note list</h1>
             <div>
                 @foreach($notes as $note)
-                    <h2 class='text-xl ml-4 mb-4 border-t-4'>{{ $note->event_year }}</h2>
-                    <p class='body ml-4 mb-8 border-b-4'>{{ $note->event_name }}</p>
+                    <h2 class='text-xl ml-4 mb-4 border-t-4'>
+                        <a href="/show/{{$note->id}}">
+                            {{ $note->event_year }} {{ $note->event_name }}
+                        </a>
+                    </h2>
+                    <p class='body ml-4 mb-8 border-b-4 truncate'>{{ $note->title }}</p>
                 @endforeach
                 <div class='paginate_links'>
                     {{ $notes->links() }}
