@@ -28,7 +28,56 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <div class="flex">
+                    <!-- Side bar [left] -->
+                    <div class="h-screen w-1/6">
+                        <div class="border h-full">
+                            <!-- Side bar title -->
+                            <div class="flex items-center justify-center">
+                                <p class="text-2xl mt-4">side bar</p>
+                            </div>
+                            <!-- links -->
+                            <nav class="mt-9">
+                                <div>
+                                    <a href="">
+                                        <p class="text-xl text-center">link_01</p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="">
+                                        <p class="text-xl text-center">link_02</p>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- contents [middle] -->
+                    <div class="border grow">
+                        {{ $slot }}
+                    </div>
+                    <!-- Side bar [right] -->
+                    <div class="h-screen w-1/6">
+                        <div class="border h-full">
+                            <!-- Side bar title -->
+                            <div class="flex items-center justify-center">
+                                <p class="text-2xl mt-4">side bar Right</p>
+                            </div>
+                            <!-- links -->
+                            <nav class="mt-9">
+                                <div>
+                                    <a href="">
+                                        <p class="text-xl text-center">link_01</p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="">
+                                        <p class="text-xl text-center">link_02</p>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </body>
