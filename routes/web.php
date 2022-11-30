@@ -22,6 +22,8 @@ Route::get('/', function () {
 # show note list 
 Route::get('/list', [PostController::class, 'show_list'] );
 
+Route::get('/show/{note}', [PostController::class, 'show']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
