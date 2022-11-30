@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+# show note list 
+Route::get('/list', [PostController::class, 'show_list'] );
 
 Route::get('/dashboard', function () {
     return view('dashboard');
