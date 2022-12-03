@@ -19,10 +19,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-# show note list 
-Route::get('/list', [PostController::class, 'show_list'] );
+# show notes list 
+Route::get('/notes', [PostController::class, 'show_list'] );
 
-Route::get('/show/{note}', [PostController::class, 'show']);
+# creating page
+Route::get('/notes/create', [PostController::class, 'create']);
+
+# store inputs to table
+Route::post('/notes', [PostController::class, 'store']);
+
+# edit a note
+Route::get('/notes/{note}/edit', [PostController::class, 'edit']);
+
+# show a note
+Route::get('/notes/{note}', [PostController::class, 'show']);
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

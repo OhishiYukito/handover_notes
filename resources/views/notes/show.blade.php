@@ -3,7 +3,7 @@
 <x-app-layout>
     <!-- header -->
     <x-slot name="header">
-        　<a href="/list">{{__('Back to list')}}</a>
+        　<a href="/notes">{{__('Back to list')}}</a>
     </x-slot>
 
     <!-- contents -->
@@ -11,7 +11,7 @@
         <!-- contents_head -->
         <head>
             <meta charset="utf-8">
-            <title>Handover Notes</title>
+            <title>Show Handover_Note</title>
             <!-- Fonts -->
             <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         </head>
