@@ -12,4 +12,18 @@ class Note extends Model
     public function getPaginateDESC(int $limit_num = 10){
         return $this->orderBy('created_at', 'DESC')->paginate($limit_num);
     }
+    
+    public function getElements(string $column_name){
+        return $this->select($column_name)->distinct()->get();
+    }
+    
+    protected $fillable = [
+        'event_year',
+        'event_name',
+        'tag',
+        'title',
+        'text',
+        'creator',
+        'updater'
+    ];
 }
