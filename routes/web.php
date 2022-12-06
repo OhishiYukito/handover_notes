@@ -29,7 +29,9 @@ Route::get('/notes/create', [PostController::class, 'create']);
 Route::post('/notes', [PostController::class, 'store']);
 
 # edit a note
-Route::get('/notes/{note}/edit', [PostController::class, 'edit']);
+# Don't use DI function. 
+Route::get('/notes/{note_id}/edit', [PostController::class, 'edit']);
+Route::put('/notes/{note}/', [PostController::class, 'update']);
 
 # show a note
 Route::get('/notes/{note}', [PostController::class, 'show']);
