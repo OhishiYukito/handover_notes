@@ -13,6 +13,7 @@ class Note extends Model
         return $this->orderBy('created_at', 'DESC')->paginate($limit_num);
     }
     
+    // function to create select bar
     public function getElements(string $column_name){
         return $this->select($column_name)->distinct()->get();
     }
