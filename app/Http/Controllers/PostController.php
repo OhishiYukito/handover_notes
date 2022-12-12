@@ -29,6 +29,11 @@ class PostController extends Controller
         $input = $request['event'];
         $id = Auth::id();
         $note -> fill($input) -> fill(['creator'=>$id, 'updater'=>$id])-> save();
+        
+        #send LINE message
+        $url = url('notes/'.$note->id);
+        $this->sendLINEMessage($url.' was created.');
+        
         return redirect('/notes/' . $note->id);
     }
     
@@ -43,8 +48,21 @@ class PostController extends Controller
         $input_data = $request['event'];
         $note->fill($input_data)->save();
         
+        # send LINE messsage
+        $url = url('notes/'.$note->id);
+        $this->sendLINEMessage($url.' was updated.');
+        
         return redirect('notes/'.$note->id);
     }
+    
+    public function sendLINEMessage(string $text){
+        $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(config('services.line.access_token'));
+        $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => config('services.line.channel_secret')]);
+        
+        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
+        return $bot->broadcast($textMessageBuilder);
+    }
+    
     
     // jump login page if a user didn't log in
     public function __construct(){
