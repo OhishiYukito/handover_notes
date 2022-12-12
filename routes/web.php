@@ -36,8 +36,6 @@ Route::put('/notes/{note}/', [PostController::class, 'update']);
 # show a note
 Route::get('/notes/{note}', [PostController::class, 'show']);
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
