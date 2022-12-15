@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
+# for survey
+use App\Http\Controllers\SurveyController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +38,18 @@ Route::put('/notes/{note}/', [PostController::class, 'update']);
 
 # show a note
 Route::get('/notes/{note}', [PostController::class, 'show']);
+
+
+# show survey list 
+Route::get('/survey', [SurveyController::class, 'show_list'] );
+
+# jump to creating page of survey
+Route::get('/survey/create', [SurveyController::class, 'create']);
+
+# save url and others to 'surveys' table
+Route::post('/survey', [SurveyController::class,'store']);
+
+Route::get('/survey/{survey}', [SurveyController::class, 'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

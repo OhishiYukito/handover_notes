@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Note;
+use App\Models\Survey;
 use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
@@ -16,7 +17,9 @@ class PostController extends Controller
     
     // show a note details
     public function show(Note $note){
-        return view('notes/show') -> with(['note' => $note]);
+        // get surveys with the same tag as note
+        $surveys = Survey::where('tag', $note->tag)->get();
+        return view('notes/show') -> with(['note' => $note, 'surveys' => $surveys]);
     }
     
     // jump to create page
