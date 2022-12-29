@@ -30,4 +30,9 @@ class SurveyController extends Controller
     public function show(Survey $survey){
         return view('survey/show') -> with(['survey' => $survey]);
     }
+    
+    // jump login page if a user didn't log in
+    public function __construct(){
+        $this->middleware('auth');
+    }
 }

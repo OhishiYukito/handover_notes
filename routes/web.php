@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Route;
 # for survey
 use App\Http\Controllers\SurveyController;
 
+# for calendar
+use App\Http\Controllers\CalendarController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +52,25 @@ Route::get('/survey/create', [SurveyController::class, 'create']);
 # save url and others to 'surveys' table
 Route::post('/survey', [SurveyController::class,'store']);
 
+# show a survey detail
 Route::get('/survey/{survey}', [SurveyController::class, 'show']);
+
+
+# show a calender
+Route::get('/calendar', [CalendarController::class, 'show']);
+
+# register an event
+Route::post('/calendar/schedule-add', [CalendarController::class, 'scheduleAdd'])->name('schedule-add');
+
+# get an event info
+Route::post('/calendar/schedule-get', [CalendarController::class, 'scheduleGet'])->name('schedule-get');
+
+# edit an event period
+Route::post('/calendar/schedule-edit-period', [CalendarController::class, 'scheduleEditPeriod'])->name('schedule-edit-period');
+
+# delete an event
+Route::delete('/calendar/schedule-delete', [CalendarController::class, 'scheduleDelete'])->name('schedule-delete');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
