@@ -31,10 +31,13 @@ let calendar = new Calendar(calendarEl, {
                 // add events gotten from database
                 successCallback(response.data);
             })
-            .catch(() => {
-                // error
-                alert("取得に失敗しました");
+            .catch(error => {
+                console.log(error.response)
             });
+              //() => {
+                // error
+                //alert("取得に失敗しました");
+            //});
     },
     
     // click on a date or specify a range
