@@ -23,14 +23,16 @@
                 <a class='absolute right-10 border-4' href="/notes/create">新規ノートの作成</a>
             </div>
             <div class='mt-8'>
-                @foreach($notes as $note)
-                    <h2 class='text-xl ml-4 mb-4 border-t-4'>
-                        <a href="/notes/{{$note->id}}">
-                            {{ $note->event_year }} {{ $note->event_name }}
-                        </a>
-                    </h2>
-                    <p class='body ml-4 mb-8 border-b-4 truncate'>{{ $note->title }}</p>
-                @endforeach
+                @if(!($notes->isEmpty()))
+                    @foreach($notes as $note)
+                        <h2 class='text-xl ml-4 mb-4 border-t-4'>
+                            <a href="/notes/{{$note->id}}">
+                                {{ $note->event_year }} {{ $note->event_name }}
+                            </a>
+                        </h2>
+                        <p class='body ml-4 mb-8 border-b-4 truncate'>{{ $note->title }}</p>
+                    @endforeach
+                @endif
                 <div class='paginate_links'>
                     {{ $notes->links() }}
                 </div>
